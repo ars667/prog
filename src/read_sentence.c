@@ -5,17 +5,18 @@
 #include <wchar.h>
 #include <wctype.h>
 #include "structs.h"
+
 #define BUF_SIZE 100
 
-struct Sentence* read_sentence() {
+struct Sentence *read_sentence() {
     int size = BUF_SIZE;
     wchar_t *buf = malloc(size * sizeof(wchar_t));
     int n = 0;
     wchar_t temp;
     do {
         if (n >= size - 2) {
-            wchar_t *t = realloc(buf, (size + BUF_SIZE)*sizeof(wchar_t));
-            if (!t) {wprintf(L"ошибка выделения памяти");}
+            wchar_t *t = realloc(buf, (size + BUF_SIZE) * sizeof(wchar_t));
+            if (!t) { wprintf(L"ошибка выделения памяти"); }
             size += BUF_SIZE;
             buf = t;
         }
